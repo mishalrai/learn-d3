@@ -4,6 +4,7 @@ module.exports ={
     entry:{
         main:'./assets/src/js/main.js'    
     },
+    devtool: 'source-maps',
     mode:"development",
     output:{
         filename:"[name].js",
