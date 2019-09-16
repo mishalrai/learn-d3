@@ -1,0 +1,33 @@
+{
+  "name": "learn-d3",
+  "version": "1.0.0",
+  "description": "I am just storing my learning proccess on d3",
+  "main": "main.js",
+  "scripts": {
+    "start": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mishalrai/learn-d3.git"
+  },
+  "keywords": [
+    "d3"
+  ],
+  "author": "Mishal Rai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mishalrai/learn-d3/issues"
+  },
+  "homepage": "https://github.com/mishalrai/learn-d3#readme",
+  "dependencies": {
+    "d3": "^5.12.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.8"
+  }
+}
