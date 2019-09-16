@@ -11,11 +11,10 @@ d3.select(".chart")
 
 
 /* Scale linear */
-var x = d3.scaleBand.linear()
-        .domain([0, d3.max(data)])
-        .range([0, 420]);
+var x = d3.scaleLinear()
+    .domain([0, d3.max(data)])
+    .range([0, 420]);
 
-console.log(x(100), 'data check');
 
 d3.select(".scale-chart")
   .selectAll('div')
