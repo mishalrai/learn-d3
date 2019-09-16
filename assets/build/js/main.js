@@ -93,8 +93,9 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("console.log('main file is loaded');\n\n//# sourceURL=webpack:///./assets/src/js/main.js?");
+console.log('main file is loaded');
 
 /***/ })
 
 /******/ });
+//# sourceMappingURL=main.js.map
