@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\n\n//# sourceURL=webpack:///./assets/src/js/main.js?");
+eval("console.log('main file is loaded');\n\n//# sourceURL=webpack:///./assets/src/js/main.js?");
 
 /***/ })
 
