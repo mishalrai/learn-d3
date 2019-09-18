@@ -8,18 +8,16 @@ const svg = d3.select("#chart-area").append("svg")
 
 d3.json("data/buildings.json")
   .then( resData =>{
-    const data = resData.map( obj => ({...obj, age:+obj.age}));
+    const data = resData.map( obj => ({...obj, height:+obj.height}));
 
-    const buildingsNames =  resData.map( obj => obj.name );
-    
     const x = d3.scaleBand()
-        .domain(buildingsNames)
+        .domain( resData.map( d => d.name ))
         .range([0, 400])
         .paddingInner([0.3])
         .paddingOuter([0.3]);
 
-    const y = d3.scaleLinear()
-        .domain([0, 1000])
+    const y = d3.scaleLinear() 
+        .domain( d3.extent(data, d=> d.height))
         .range([0, 400]);
 
     const rects = svg.selectAll("rect")
