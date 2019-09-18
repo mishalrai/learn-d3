@@ -1,15 +1,14 @@
 /*----------------------------------------* 
  * LOADING DATA (.CSV .TSV .JSON) 
  *----------------------------------------*/  
+/* Selector */
+const svg = d3.select("#chart-area").append("svg")
+  .attr("width", 400)
+  .attr("height", 400);
 
 d3.json("data/ages.json")
   .then( resData =>{
     const data = resData.map( obj => ({...obj, age:+obj.age}));
-    
-    /* Selector */
-    const svg = d3.select("#chart-area").append("svg")
-      .attr("width", 400)
-      .attr("height", 400);
 
     const circles = svg.selectAll("circle")
       .data(data)
