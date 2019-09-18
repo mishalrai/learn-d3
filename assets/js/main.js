@@ -10,6 +10,14 @@ d3.json("data/buildings.json")
   .then( resData =>{
     const data = resData.map( obj => ({...obj, age:+obj.age}));
 
+    const buildingsNames =  resData.map( obj => obj.name );
+    
+    const x = d3.scaleBand()
+        .domain(buildingsNames)
+        .range([0, 400])
+        .paddingInner([0.3])
+        .paddingOuter([0.3]);
+
     const y = d3.scaleLinear()
         .domain([0, 1000])
         .range([0, 400]);
@@ -20,9 +28,9 @@ d3.json("data/buildings.json")
           .append("rect")
             .attr("y", 0)
             .attr("x", function(d, i){
-              return(i*60);
+              return x(d.name); 
             })
-            .attr("width", 40)
+            .attr("width", x.bandwidth)
             .attr("height", function(d){
               return y(d.height);
             })
