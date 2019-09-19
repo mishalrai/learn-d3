@@ -20,19 +20,21 @@ d3.json("data/buildings.json")
 
     const y = d3.scaleLinear()
         .domain([0, 1000])
-        .range([0, 400]);
+        .range([400, 0]);
 
     const rects = svg.selectAll("rect")
           .data(data)
           .enter()
           .append("rect")
-            .attr("y", 0)
+            .attr("y", function(d){
+              return y(d.height)
+            })
             .attr("x", function(d, i){
               return x(d.name); 
             })
             .attr("width", x.bandwidth)
             .attr("height", function(d){
-              return y(d.height);
+              return y( 400 - d.height);
             })
             .attr("fill", "grey")
   })
