@@ -1,7 +1,7 @@
 /*---------------------------------------------------*
  * Coffe shop annual data visualization 
  *---------------------------------------------------*/
-const margin = { top: 30, right: 20, bottom:20, left: 10 };
+const margin = { top: 30, right: 20, bottom:80, left: 80 };
 
 const width = 760 - (margin.right + margin.left);
 const height = 500 - (margin.top + margin.bottom);
@@ -27,8 +27,41 @@ d3.json("data/data.json")
 
     const y = d3.scaleLinear()
       .domain([0, d3.max( revenue)])
-      .range([0, height]);
+      .range([height, 0]);
 
+    console.log(d3.max(revenue), "max revenue");
+    /* Axis generator */
+    const xAxisCall = d3.axisBottom(x);
+    svg.append("g")
+      .attr("transform", `translate(0, ${height})`)
+      .call(xAxisCall);
+
+    const yAxisCall = d3.axisLeft(y)
+    svg.append("g")
+      .call(yAxisCall)
+
+
+    /* Adding Labels */
+    svg.append("text")
+      .attr("class", "x axislabel")
+      .attr("x", width /2)
+      .attr("y", height + 50)
+      .attr("font-size", "20px")
+      .attr("text-anchor", "middle")
+      .text("Months");
+
+    svg.append("text")
+      .attr("class", "y axislabel")
+      .attr("x", height/2)
+      .attr("y", 70)
+      .attr("font-size", "20px")
+      .attr("text-anchor", "middle")
+      .attr("transform", "rotate(-270)")
+      .text("Revenue");
+      // .attr("transform", "rotate()")
+
+      
+    /* Rect generator */
     const rects = svg.selectAll("rect")
       .data(data)
       .enter()
@@ -36,7 +69,7 @@ d3.json("data/data.json")
         .attr("y", d => y(d.revenue))
         .attr("x", d => x(d.month))
         .attr("width", x.bandwidth())
-        .attr("height", d => y(d.revenue))
+        .attr("height", d => height - y(d.revenue))
         .attr("fill", "streelblue");
     
   })
