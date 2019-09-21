@@ -70,7 +70,7 @@ d3.json("data/data.json")
         .attr("x", d => x(d.month))
         .attr("width", x.bandwidth())
         .attr("height", d => height - y(d.revenue))
-        .attr("fill", "streelblue");
+        .attr("fill", "teal");
     
   })
   .catch( error =>{
